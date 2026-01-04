@@ -1,4 +1,65 @@
 :root{
+  /* ===== Cinematic FX Layer ===== */
+.fx{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:5;
+}
+
+.fx--noise{
+  opacity:.12;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+}
+
+.fx--scan{
+  opacity:.28;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.06) 0px,
+      rgba(255,255,255,.06) 1px,
+      transparent 2px,
+      transparent 6px
+    );
+  mix-blend-mode:soft-light;
+}
+
+/* Animated aurora field behind everything */
+body:before{
+  content:"";
+  position:fixed;
+  inset:-40vh -40vw;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(1200px 800px at 20% 10%, rgba(92,255,108,.18), transparent 60%),
+    radial-gradient(900px 700px at 80% 30%, rgba(92,255,108,.12), transparent 62%),
+    radial-gradient(700px 500px at 45% 75%, rgba(120,255,180,.10), transparent 58%);
+  filter: blur(20px) saturate(1.2);
+  animation: auroraDrift 16s ease-in-out infinite alternate;
+}
+
+@keyframes auroraDrift{
+  0% { transform: translate3d(-2%, -1%, 0) rotate(-2deg); }
+  100% { transform: translate3d(2%, 1%, 0) rotate(2deg); }
+}
+
+/* Cursor glow */
+.cursorGlow{
+  position:fixed;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  transform: translate(-50%,-50%);
+  background: radial-gradient(circle, rgba(92,255,108,.16), transparent 60%);
+  filter: blur(10px);
+  z-index:6;
+  pointer-events:none;
+  opacity:.9;
+}
   --bg:#060708;
   --bg2:#0b0d0c;
   --text:#e7ecea;
