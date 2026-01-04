@@ -131,4 +131,23 @@ subscribeForm.addEventListener("submit", async (e) => {
     console.error(err);
     statusEl.textContent = "Something glitched. Try again.";
   }
+  // Cursor glow follow
+const glow = document.querySelector(".cursorGlow");
+window.addEventListener("mousemove", (e) => {
+  if (!glow) return;
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+});
+
+// Scroll reveal (simple + clean)
+const revealEls = document.querySelectorAll(".card, .section__head, .quote, .tableWrap");
+revealEls.forEach(el => el.classList.add("reveal"));
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("reveal--in");
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach(el => io.observe(el));
 });
