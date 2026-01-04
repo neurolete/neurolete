@@ -11,6 +11,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./styles.css" />
+
+  <!-- Apply CTA: big + obvious (so you DON'T have to touch styles.css) -->
+  <style>
+    .btn--applyBig{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:16px 22px;
+      font-size:14px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      border-radius:14px;
+      border:1px solid rgba(120,255,160,.35);
+      background: radial-gradient(120% 120% at 30% 20%, rgba(120,255,160,.22), rgba(20,30,25,.88));
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.35),
+        0 0 0 1px rgba(255,255,255,.06) inset,
+        0 0 38px rgba(120,255,160,.14);
+      transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease;
+    }
+    .btn--applyBig:hover{
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow:
+        0 14px 40px rgba(0,0,0,.42),
+        0 0 0 1px rgba(255,255,255,.08) inset,
+        0 0 52px rgba(120,255,160,.20);
+    }
+  </style>
 </head>
 
 <body>
@@ -117,13 +147,16 @@
           <a class="btn btn--primary" href="#pathways">Choose your pathway</a>
           <a class="btn btn--ghost" href="#compare">See why this is different</a>
         </div>
-<div class="hero__cta" style="margin-top:18px">
-  <a class="btn btn--primary"
-     href="https://physiquephysicians.typeform.com/neurolete"
-     target="_blank">
-    APPLY TO WORK WITH NEUROLETE
-  </a>
-</div>
+
+        <!-- BIG obvious Apply CTA -->
+        <div class="hero__cta" style="margin-top:18px">
+          <a class="btn btn--applyBig"
+             href="https://physiquephysicians.typeform.com/neurolete"
+             target="_blank" rel="noopener">
+            APPLY TO WORK WITH NEUROLETE
+          </a>
+        </div>
+
         <div class="hero__signal">
           <div class="signal">
             <span class="signal__label">signal:</span>
@@ -137,7 +170,6 @@
       </div>
     </section>
 
-    <!-- (rest of your page stays the same content-wise) -->
     <!-- PATHWAYS -->
     <section id="pathways" class="section">
       <div class="container">
@@ -147,7 +179,7 @@
         </div>
 
         <div class="grid grid--2">
-          <article class="card card--pathway tilt reveal" data-open="athlete" role="button" tabindex="0">
+          <article class="card card--pathway tilt reveal">
             <div class="card__top">
               <div class="badge">ATHLETE PATHWAY</div>
               <h3 class="card__title">For current &amp; former pro athletes</h3>
@@ -165,12 +197,16 @@
             </ul>
 
             <div class="card__actions">
-              <button class="btn btn--primary" type="button">Open Athlete Pathway</button>
-              <span class="card__hint">Tap to view details</span>
+              <a class="btn btn--applyBig"
+                 href="https://physiquephysicians.typeform.com/neurolete"
+                 target="_blank" rel="noopener">
+                APPLY — ATHLETE PATHWAY
+              </a>
+              <span class="card__hint">Next step: fill out the application</span>
             </div>
           </article>
 
-          <article class="card card--pathway tilt reveal" data-open="executive" role="button" tabindex="0">
+          <article class="card card--pathway tilt reveal">
             <div class="card__top">
               <div class="badge">EXECUTIVE PATHWAY</div>
               <h3 class="card__title">For CEOs, founders, executives</h3>
@@ -188,30 +224,127 @@
             </ul>
 
             <div class="card__actions">
-              <button class="btn btn--primary" type="button">Open Executive Pathway</button>
-              <span class="card__hint">Tap to view details</span>
+              <a class="btn btn--applyBig"
+                 href="https://physiquephysicians.typeform.com/neurolete"
+                 target="_blank" rel="noopener">
+                APPLY — EXECUTIVE PATHWAY
+              </a>
+              <span class="card__hint">Next step: fill out the application</span>
             </div>
           </article>
         </div>
       </div>
     </section>
-<section class="section section--alt">
-  <div class="container">
-    <div class="section__head reveal">
-      <h2 class="section__title">Consult with Neurolete</h2>
-      <p class="section__desc">
-        This is a clarity call — not a sales pitch.
-        We’ll assess whether Neurolete is the right system for you.
-      </p>
-    </div>
 
-    <div style="max-width:900px; margin:0 auto;">
-      <div data-tf-live="01KE3G4XY88TCGFRWH7HT9DJ5V"></div>
-    </div>
-  </div>
-</section>
+    <!-- HOW (FIXED: added so the nav link works) -->
+    <section id="how" class="section section--alt">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2 class="section__title">How Neurolete Works</h2>
+          <p class="section__desc">A systems-first approach. Built for pressure. Designed for longevity.</p>
+        </div>
 
-    <!-- SUBSCRIBE (kept) -->
+        <div class="grid grid--2">
+          <article class="card reveal">
+            <div class="badge">01 — DIAGNOSTIC</div>
+            <h3 class="card__title">Identify the bottleneck</h3>
+            <p class="card__text">
+              We map what’s actually driving your plateau: nervous system load, recovery debt, training strategy,
+              nutrition execution, identity friction, lifestyle instability.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="badge">02 — BUILD</div>
+            <h3 class="card__title">Install the system</h3>
+            <p class="card__text">
+              Training + physique strategy, nutrition protocols, recovery architecture, and mindset frameworks
+              built to hold under real life stress.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="badge">03 — EXECUTE</div>
+            <h3 class="card__title">Consistency without willpower</h3>
+            <p class="card__text">
+              We reduce decision fatigue and lock in non-negotiables. Your environment does the heavy lifting.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="badge">04 — REPEAT</div>
+            <h3 class="card__title">Sustainable edge</h3>
+            <p class="card__text">
+              Less chaos. More output. Better recovery. A nervous system that can carry the life you’re building.
+            </p>
+          </article>
+        </div>
+
+        <div style="text-align:center; margin-top:34px;">
+          <a class="btn btn--applyBig"
+             href="https://physiquephysicians.typeform.com/neurolete"
+             target="_blank" rel="noopener">
+            BOOK / APPLY — START HERE
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY / COMPARE -->
+    <section id="compare" class="section">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2 class="section__title">Why Neurolete Is Different</h2>
+          <p class="section__desc">
+            Most people hire help for one piece of the puzzle. Neurolete is the full operating system.
+          </p>
+        </div>
+
+        <div class="tableWrap reveal" role="region" aria-label="Comparison table">
+          <table class="compare">
+            <thead>
+              <tr>
+                <th>Option</th>
+                <th>What you typically get</th>
+                <th>What’s missing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Nutritionist</td>
+                <td>Macros, meal guidance, accountability</td>
+                <td>Nervous system + recovery + identity + performance psychology integration</td>
+              </tr>
+              <tr>
+                <td>Mindset coach</td>
+                <td>Mindset tools and accountability</td>
+                <td>Body composition + training + physiology strategy built into one system</td>
+              </tr>
+              <tr>
+                <td>Business coach</td>
+                <td>Strategy, scaling, leadership frameworks</td>
+                <td>Health &amp; performance infrastructure that sustains the output</td>
+              </tr>
+              <tr class="compare__highlight">
+                <td><strong>Neurolete™</strong></td>
+                <td><strong>Mindset + body composition + training + nutrition + recovery + identity</strong></td>
+                <td><strong>One operating system. No duct tape.</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="text-align:center; margin-top:36px;">
+          <a class="btn btn--applyBig"
+             href="https://physiquephysicians.typeform.com/neurolete"
+             target="_blank" rel="noopener">
+            APPLY TO WORK WITH NEUROLETE
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPDATES / SUBSCRIBE (still useful, but not the “next step”) -->
     <section id="subscribe" class="section section--alt">
       <div class="container">
         <div class="section__head reveal">
@@ -236,23 +369,16 @@
 
           <p class="form__fineprint">No spam. Just system upgrades.</p>
         </form>
+
+        <div style="text-align:center; margin-top:26px;">
+          <a class="btn btn--applyBig"
+             href="https://physiquephysicians.typeform.com/neurolete"
+             target="_blank" rel="noopener">
+            READY? APPLY HERE
+          </a>
+        </div>
       </div>
     </section>
-<section class="section">
-  <div class="container">
-    <div class="section__head reveal">
-      <h2 class="section__title">Book Your Free 30-Minute Consultation</h2>
-      <p class="section__desc">
-        Apply to work with Neurolete.
-        If it’s not a fit, we’ll tell you — honestly.
-      </p>
-    </div>
-
-    <div style="max-width:900px; margin:0 auto;">
-      <div data-tf-live="01KE3G4XY88TCGFRWH7HT9DJ5V"></div>
-    </div>
-  </div>
-</section>
 
     <footer class="footer">
       <div class="container footer__inner">
@@ -266,7 +392,7 @@
       </div>
     </footer>
 
-    <!-- MODAL -->
+    <!-- MODAL (kept; harmless even if not used right now) -->
     <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
       <div class="modal__overlay" data-close="true"></div>
       <div class="modal__panel" role="document">
@@ -281,7 +407,6 @@
 
   <!-- ABSOLUTE FALLBACK: even if script.js fails, ENTER will still work -->
   <script>
-    // Define the global function the button calls.
     window.__enterNeurolete = function(){
       var gate = document.getElementById("gate");
       var app = document.getElementById("app");
@@ -301,6 +426,6 @@
       }, 280);
     };
   </script>
-<script src="//embed.typeform.com/next/embed.js"></script>
 </body>
 </html>
+
