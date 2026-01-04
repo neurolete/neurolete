@@ -24,10 +24,11 @@ html,body{height:100%}
 body{
   margin:0;
   font-family: var(--font-body);
-  background: radial-gradient(1200px 800px at 20% 10%, rgba(87,255,122,.12), transparent 55%),
-              radial-gradient(900px 650px at 80% 20%, rgba(87,255,122,.08), transparent 58%),
-              radial-gradient(700px 500px at 55% 85%, rgba(87,255,122,.06), transparent 60%),
-              linear-gradient(180deg, var(--bg), var(--bg2));
+  background:
+    radial-gradient(1200px 800px at 20% 10%, rgba(87,255,122,.12), transparent 55%),
+    radial-gradient(900px 650px at 80% 20%, rgba(87,255,122,.08), transparent 58%),
+    radial-gradient(700px 500px at 55% 85%, rgba(87,255,122,.06), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
   color:var(--text);
   overflow-x:hidden;
 }
@@ -41,51 +42,40 @@ a{color:inherit; text-decoration:none}
 }
 
 .smallNote{color:var(--muted); font-size:.92rem; margin:.85rem 0 0}
+.mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
 
-.mono{
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-
+/* ===== FX / Background layers ===== */
 .starfield{
-  position:fixed;
-  inset:0;
+  position:fixed; inset:0;
   z-index:0;
-  pointer-events:none;
   opacity:.75;
-}
-
-/* ===== FX layers ===== */
-.fx{
-  position:fixed;
-  inset:0;
   pointer-events:none;
-  z-index:2;
 }
-
+.fx{
+  position:fixed; inset:0;
+  z-index:2;
+  pointer-events:none;
+}
 .fx--noise{
   opacity:.10;
   mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
   background-size:180px 180px;
 }
-
 .fx--scan{
   opacity:.22;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(255,255,255,.06) 0px,
-      rgba(255,255,255,.06) 1px,
-      transparent 2px,
-      transparent 7px
-    );
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.06) 0px,
+    rgba(255,255,255,.06) 1px,
+    transparent 2px,
+    transparent 7px
+  );
   mix-blend-mode:soft-light;
 }
-
 .cursorGlow{
   position:fixed;
-  width:420px;
-  height:420px;
+  width:420px; height:420px;
   border-radius:50%;
   transform: translate(-50%,-50%);
   background: radial-gradient(circle, rgba(87,255,122,.16), transparent 60%);
@@ -95,8 +85,8 @@ a{color:inherit; text-decoration:none}
   opacity:.9;
 }
 
-/* ===== BRAND ===== */
-.brand{display:flex; align-items:center; gap:10px; position:relative; z-index:4}
+/* ===== Brand ===== */
+.brand{display:flex; align-items:center; gap:10px; position:relative; z-index:5}
 .brand__mark{
   width:18px; height:18px; border-radius:6px;
   background: radial-gradient(circle at 30% 30%, rgba(87,255,122,.9), rgba(87,255,122,.1));
@@ -110,7 +100,7 @@ a{color:inherit; text-decoration:none}
 }
 .tm{font-weight:600; opacity:.9; letter-spacing:0; margin-left:2px}
 
-/* ===== BUTTONS ===== */
+/* ===== Buttons ===== */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -139,12 +129,10 @@ a{color:inherit; text-decoration:none}
   border-color: rgba(87,255,122,.40);
   background: linear-gradient(180deg, rgba(87,255,122,.22), rgba(87,255,122,.08));
 }
-
 .btn--ghost{
   border-color: rgba(255,255,255,.14);
   background: rgba(0,0,0,.18);
 }
-
 .btn--enter{
   font-family: var(--font-head);
   letter-spacing:.22em;
@@ -153,7 +141,7 @@ a{color:inherit; text-decoration:none}
   padding:14px 22px;
 }
 
-/* ===== GATE ===== */
+/* ===== Gate ===== */
 .gate{
   position:fixed; inset:0;
   display:grid;
@@ -167,6 +155,7 @@ a{color:inherit; text-decoration:none}
     radial-gradient(700px 450px at 40% 35%, rgba(87,255,122,.10), transparent 60%),
     linear-gradient(180deg, rgba(0,0,0,.72), rgba(0,0,0,.78));
   filter: saturate(1.15);
+  pointer-events:none;
 }
 .gate__content{
   position:relative;
@@ -178,10 +167,15 @@ a{color:inherit; text-decoration:none}
   border:1px solid rgba(255,255,255,.10);
   background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
   box-shadow: var(--shadow);
-  z-index:40;
+  z-index:50;
+  pointer-events:auto; /* clickable */
 }
 
-/* Portal frame */
+/* Portal frame + glow (BUT NEVER blocks clicks) */
+.gate__content:before,
+.gate__content:after{
+  pointer-events:none;
+}
 .gate__content:before{
   content:"";
   position:absolute;
@@ -194,8 +188,6 @@ a{color:inherit; text-decoration:none}
   mask-composite: exclude;
   opacity:.75;
 }
-
-/* Soft aurora pulse */
 .gate__content:after{
   content:"";
   position:absolute;
@@ -207,7 +199,6 @@ a{color:inherit; text-decoration:none}
   animation: gatePulse 4.6s ease-in-out infinite alternate;
   opacity:.65;
 }
-
 @keyframes gatePulse{
   0%{ transform: translate3d(-2%, -1%, 0) scale(1); }
   100%{ transform: translate3d(2%, 1%, 0) scale(1.05); }
@@ -220,7 +211,6 @@ a{color:inherit; text-decoration:none}
   background: linear-gradient(90deg, transparent, rgba(87,255,122,.40), transparent);
   opacity:.7;
 }
-
 .gate__tagline{
   margin:0 auto 14px;
   color:rgba(234,240,238,.85);
@@ -233,7 +223,6 @@ a{color:inherit; text-decoration:none}
   text-shadow:0 0 18px rgba(87,255,122,.22);
   font-weight:700;
 }
-
 .gate__reprogram{
   display:flex;
   align-items:center;
@@ -266,7 +255,6 @@ a{color:inherit; text-decoration:none}
   font-size:.95rem;
   line-height:1.5;
 }
-
 .gate__micro{
   display:flex;
   justify-content:center;
@@ -286,10 +274,12 @@ a{color:inherit; text-decoration:none}
   font-size:.88rem;
 }
 
-/* Hide main until enter */
+/* Ensure ENTER button is always on top and clickable */
+#enterBtn{position:relative; z-index:60}
+
 .app--hidden{display:none}
 
-/* ===== TOPBAR ===== */
+/* ===== Topbar ===== */
 .topbar{
   position:sticky; top:0; z-index:15;
   backdrop-filter: blur(12px);
@@ -314,7 +304,7 @@ a{color:inherit; text-decoration:none}
 }
 .nav__link:hover{color:var(--text); text-shadow:0 0 12px rgba(87,255,122,.25)}
 
-/* ===== HERO ===== */
+/* ===== Hero ===== */
 .hero{position:relative; padding:78px 0 54px; z-index:5}
 .hero__bg{
   position:absolute; inset:-140px 0 -180px 0;
@@ -330,7 +320,6 @@ a{color:inherit; text-decoration:none}
   line-height:1.08;
   margin:0 0 14px;
   letter-spacing:.06em;
-  text-transform:none;
 }
 .hero__sub{
   color:var(--muted);
@@ -349,15 +338,8 @@ a{color:inherit; text-decoration:none}
   font-weight:700;
   font-size:.92rem;
 }
-
 .hero__cta{display:flex; gap:12px; flex-wrap:wrap; margin:0 0 18px}
-
-.hero__signal{
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-  margin-top:8px;
-}
+.hero__signal{display:flex; gap:14px; flex-wrap:wrap; margin-top:8px}
 .signal{
   display:inline-flex;
   gap:10px;
@@ -374,12 +356,9 @@ a{color:inherit; text-decoration:none}
   color:rgba(234,240,238,.70);
   font-size:.9rem;
 }
-.signal__value{
-  color:rgba(234,240,238,.92);
-  font-weight:800;
-}
+.signal__value{color:rgba(234,240,238,.92); font-weight:800}
 
-/* ===== SECTIONS ===== */
+/* ===== Sections ===== */
 .section{padding:56px 0; z-index:5; position:relative}
 .section--alt{
   background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
@@ -395,7 +374,7 @@ a{color:inherit; text-decoration:none}
 }
 .section__desc{margin:0; color:var(--muted); max-width:78ch; line-height:1.6}
 
-/* ===== GRID + CARDS ===== */
+/* ===== Grid + Cards ===== */
 .grid{display:grid; gap:16px}
 .grid--2{grid-template-columns: repeat(2, minmax(0, 1fr))}
 .grid--3{grid-template-columns: repeat(3, minmax(0, 1fr))}
@@ -411,12 +390,7 @@ a{color:inherit; text-decoration:none}
   box-shadow: 0 12px 44px rgba(0,0,0,.30);
   padding:18px;
 }
-
-.card__title{
-  font-family: var(--font-head);
-  margin:0 0 8px;
-  letter-spacing:.06em;
-}
+.card__title{font-family: var(--font-head); margin:0 0 8px; letter-spacing:.06em}
 .card__text{margin:0; color:var(--muted); line-height:1.6}
 
 .card--pathway{
@@ -431,7 +405,6 @@ a{color:inherit; text-decoration:none}
   border-color: rgba(87,255,122,.30);
   box-shadow: 0 24px 80px rgba(0,0,0,.46);
 }
-
 .card__top{margin:0 0 14px}
 .badge{
   display:inline-flex;
@@ -453,7 +426,7 @@ a{color:inherit; text-decoration:none}
 .card__actions{margin:16px 0 0; display:flex; align-items:center; gap:12px; flex-wrap:wrap}
 .card__hint{color:rgba(234,240,238,.62); font-weight:700; font-size:.92rem}
 
-/* ===== QUOTE ===== */
+/* ===== Quote ===== */
 .quote{
   margin-top:18px;
   padding:18px;
@@ -470,7 +443,7 @@ a{color:inherit; text-decoration:none}
   letter-spacing:.08em;
 }
 
-/* ===== TABLE ===== */
+/* ===== Table ===== */
 .tableWrap{
   border-radius: var(--radius);
   border:1px solid rgba(255,255,255,.10);
@@ -502,17 +475,13 @@ a{color:inherit; text-decoration:none}
   border-bottom-color: rgba(87,255,122,.18);
 }
 
-/* ===== TESTIMONIALS ===== */
+/* ===== Testimonials ===== */
 .testimonials{margin-top:26px}
-.testimonials__title{
-  font-family: var(--font-head);
-  margin:0 0 12px;
-  letter-spacing:.08em;
-}
+.testimonials__title{font-family: var(--font-head); margin:0 0 12px; letter-spacing:.08em}
 .card--quote p{margin:0 0 10px; line-height:1.55}
 .card--quote span{color:rgba(234,240,238,.70); font-weight:800}
 
-/* ===== FORM ===== */
+/* ===== Form ===== */
 .form{max-width:640px}
 .input{
   width:100%;
@@ -532,7 +501,7 @@ a{color:inherit; text-decoration:none}
 .form__status{color:rgba(234,240,238,.78); font-weight:800}
 .form__fineprint{color:rgba(234,240,238,.62); margin:10px 0 0; font-size:.92rem}
 
-/* ===== FOOTER ===== */
+/* ===== Footer ===== */
 .footer{padding:22px 0; position:relative; z-index:5}
 .footer__inner{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap}
 .footer__copy{margin:10px 0 0; color:rgba(234,240,238,.65); font-size:.9rem}
@@ -540,7 +509,7 @@ a{color:inherit; text-decoration:none}
 .footer__link{color:rgba(234,240,238,.78); font-weight:800}
 .footer__link:hover{color:var(--text)}
 
-/* ===== MODAL ===== */
+/* ===== Modal ===== */
 .modal{position:fixed; inset:0; display:none; z-index:60}
 .modal.isOpen{display:block}
 .modal__overlay{position:absolute; inset:0; background: rgba(0,0,0,.68); backdrop-filter: blur(8px)}
@@ -566,7 +535,7 @@ a{color:inherit; text-decoration:none}
 }
 .modal__close:hover{border-color: rgba(87,255,122,.35)}
 
-/* ===== REVEAL ===== */
+/* ===== Reveal ===== */
 .reveal{
   opacity:0;
   transform: translateY(16px);
