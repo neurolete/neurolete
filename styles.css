@@ -313,7 +313,11 @@ a{color:inherit; text-decoration:none}
     radial-gradient(700px 520px at 15% 40%, rgba(87,255,122,.09), transparent 60%);
   pointer-events:none;
 }
-.hero__inner{position:relative}
+.hero__inner{
+  position:relative;
+  text-align:center;
+  align-items:center;
+}
 .hero__title{
   font-family: var(--font-head);
   font-size: clamp(2.05rem, 4.2vw, 3.35rem);
@@ -323,12 +327,18 @@ a{color:inherit; text-decoration:none}
 }
 .hero__sub{
   color:var(--muted);
-  max-width:74ch;
+  max-width:780px;
   font-size:1.06rem;
   line-height:1.6;
-  margin:0 0 20px;
+  margin:0 auto 20px;
 }
-.hero__pills{display:flex; gap:10px; flex-wrap:wrap; margin:0 0 22px}
+.hero__pills{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin:0 0 22px;
+}
 .pill{
   padding:10px 12px;
   border-radius:999px;
@@ -338,7 +348,13 @@ a{color:inherit; text-decoration:none}
   font-weight:700;
   font-size:.92rem;
 }
-.hero__cta{display:flex; gap:12px; flex-wrap:wrap; margin:0 0 18px}
+.hero__cta{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin:0 0 18px;
+}
 .hero__signal{display:flex; gap:14px; flex-wrap:wrap; margin-top:8px}
 .signal{
   display:inline-flex;
