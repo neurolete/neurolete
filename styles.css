@@ -409,3 +409,14 @@ a{color:inherit; text-decoration:none}
   cursor:pointer;
 }
 .modal__close:hover{border-color: rgba(92,255,108,.35)}
+
+/* Scroll reveal */
+.reveal{
+  opacity:0;
+  transform: translateY(14px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal--in{
+  opacity:1;
+  transform: translateY(0);
+}
